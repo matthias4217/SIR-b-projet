@@ -12,12 +12,13 @@
     </header>
         <div id="upgrades" class="container">
             Upgrades available : ⚠️ coming soon ⚠
-            <div class="upgrade">
-                🦖Raptor
-            </div>
-            <div class="upgrade">
-                🚌Autobus
-            </div>
+            <ul>
+            {% for upgrade in game_data.upgrades %}
+                <li class="upgrade">
+                    {{ game_data.upgrades[upgrade]["name"] }} : {{ game_data.upgrades[upgrade]["number"] }}
+                </li>
+            {% endfor %}
+            </ul>
         </div>
     <div id="cookie" class="container-fluid">
         Cookies : {{ game_data.cookies_nbr }}

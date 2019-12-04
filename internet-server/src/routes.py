@@ -15,6 +15,11 @@ def get_style():
     return stylesheet
 
 
+def update_cookies():
+    app.cookies += 1
+    for upgrade_name in app.upgrades:
+        app.cookies += app.upgrades[upgrade_name]['number'] * app.upgrades[upgrade_name]['cpc']
+
 
 @main.route("/")
 def accueil():
@@ -23,7 +28,8 @@ def accueil():
     #    session['cookies_nbr'] += 1
     #else:
     #    session['cookies_nbr'] = 1
-    app.cookies += 1
+    update_cookies()
+
     game_data['cookies_nbr'] = app.cookies  # session['cookies_nbr']
     game_data['upgrades'] = app.upgrades
     return render_template("index.html", stylesheet=get_style(), app_name=app.config["APP_NAME"],
@@ -37,6 +43,7 @@ def buy(upgrade_name):
         if app.upgrades[upgrade_name]["cost"] < app.cookies:
             #session["cookies_nbr"] -= app.upgrades[upgrade_name]["cost"]
             app.cookies -= app.upgrades[upgrade_name]["cost"]
+            app.upgrades[upgrade_name]["number"] += 1
         else:
             app.logger.info("Not enough cookies")
     else:

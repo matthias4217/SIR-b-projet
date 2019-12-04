@@ -17,10 +17,9 @@ class Jukebox(Flask):
             self.version = f.read()
 
         self.cookies = 0
-        self.upgrades = {
-            'raptor': {'cost': 100, 'count': 0},
-            'autobus': {'cost': 1000, 'count': 0}
-        }
+        self.upgrades = dict()
+        self.upgrades['raptor'] = {'name': "🦖Raptor", 'cost': 100, 'number': 0, 'cpc': 1}
+        self.upgrades['autobus'] = {'name': "Autobus", 'cost': 1000, 'number': 0, 'cpc': 10}
 
         self.stylesheet = "default.css"
         self.config.from_pyfile("config.py")
