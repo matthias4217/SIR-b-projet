@@ -7,26 +7,35 @@
     <!--<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/custom/') }}{{ stylesheet }}">-->
 </head>
 <body>
-    <header>
+    <header class="container border border-primary p-4">
         <h1>{{ app_name }}</h1>
     </header>
-        <div id="upgrades" class="container">
-            Upgrades available : ⚠️ coming soon ⚠
-            <ul>
+    <div class="container">
+        <div id="upgrades" class="row border border-secondary p-0">
+            <ul class="list-group list-group-horizontal">
             {% for upgrade in game_data.upgrades %}
-                <li class="upgrade">
+                <li class="upgrade list-group-item">
+                    {{ game_data.upgrades[upgrade]["name"] }} : {{ game_data.upgrades[upgrade]["cost"] }} cookies
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    <div class="row">
+        <div id="cookie" class="col-8 border border-secondary p-5">
+            Cookies : {{ game_data.cookies_nbr }}
+        </div>
+        <div id="list" class="col border border-secondary p-0">
+            <ul class="list-group">
+            {% for upgrade in game_data.upgrades %}
+                <li class="upgrade list-group-item">
                     {{ game_data.upgrades[upgrade]["name"] }} : {{ game_data.upgrades[upgrade]["number"] }}
                 </li>
             {% endfor %}
             </ul>
         </div>
-    <div id="cookie" class="container-fluid">
-        Cookies : {{ game_data.cookies_nbr }}
     </div>
-    <div id="list" class="container">
-                🦖Raptor : ???
     </div>
-    <footer>
+    <footer class="container border border-primary">
         aenyx, rock-kun et ⛧
         <br />
         Version {{ version }}
