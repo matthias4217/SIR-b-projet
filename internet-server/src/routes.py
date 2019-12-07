@@ -15,12 +15,6 @@ def get_style():
     return stylesheet
 
 
-def update_cookies():
-    app.cookies += 1
-    for upgrade_name in app.upgrades:
-        app.cookies += app.upgrades[upgrade_name]['number'] * app.upgrades[upgrade_name]['cpc']
-
-
 @main.route("/")
 def accueil():
     game_data = dict()
@@ -28,24 +22,24 @@ def accueil():
     #    session['cookies_nbr'] += 1
     #else:
     #    session['cookies_nbr'] = 1
-    update_cookies()
+    app.game_data.update_cookies()
 
-    game_data['cookies_nbr'] = app.cookies  # session['cookies_nbr']
-    game_data['upgrades'] = app.upgrades
+    game_data['cookies_nbr'] = app.game_data.cookies  # session['cookies_nbr']
+    game_data['upgrades'] = app.game_data.upgrades
     return render_template("index.html", stylesheet=get_style(), app_name=app.config["APP_NAME"],
                            game_data=game_data, version=app.version)
 
 
-@main.route("/buy/<upgrade_name>")
-def buy(upgrade_name):
-    if upgrade_name in app.upgrades:
-        #if app.upgrades[upgrade_name]["cost"] < session["cookies_nbr"]:
-        if app.upgrades[upgrade_name]["cost"] < app.cookies:
-            #session["cookies_nbr"] -= app.upgrades[upgrade_name]["cost"]
-            app.cookies -= app.upgrades[upgrade_name]["cost"]
-            app.upgrades[upgrade_name]["number"] += 1
-        else:
-            app.logger.info("Not enough cookies")
+@main.route("/buy/<int:upgrade_index>")
+def buy(upgrade_index):
+    # TODO : redo this function
+    if upgrade_index >= len(app.game_data.upgrades) | upgrade_index < 0:
+        return
+
+    upgrade = app.game_data.upgrades[upgrade_index]
+    if upgrade["base_cost"] < app.game_data.cookies:
+        app.game_data.cookies -= upgrade["base_cost"]
+        upgrade["number"] += 1
     else:
-        app.logger.info("Upgrade not found")
+        app.logger.info("Not enough cookies")
     return redirect("/")

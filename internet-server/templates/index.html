@@ -15,7 +15,7 @@
             <ul class="list-group list-group-horizontal">
             {% for upgrade in game_data.upgrades %}
                 <li class="upgrade list-group-item">
-                    {{ game_data.upgrades[upgrade]["name"] }} : {{ game_data.upgrades[upgrade]["cost"] }} cookies
+                    {{ upgrade["name"] }} : {{ upgrade["base_cost"] }} cookies
                 </li>
             {% endfor %}
             </ul>
@@ -28,7 +28,7 @@
             <ul class="list-group">
             {% for upgrade in game_data.upgrades %}
                 <li class="upgrade list-group-item">
-                    {{ game_data.upgrades[upgrade]["name"] }} : {{ game_data.upgrades[upgrade]["number"] }}
+                    {{ upgrade["name"] }} : {{ upgrade["number"] }}
                 </li>
             {% endfor %}
             </ul>
