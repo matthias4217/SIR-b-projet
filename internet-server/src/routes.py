@@ -18,10 +18,6 @@ def get_style():
 @main.route("/")
 def accueil():
     game_data = dict()
-    #if 'cookies_nbr' in session:
-    #    session['cookies_nbr'] += 1
-    #else:
-    #    session['cookies_nbr'] = 1
     app.game_data.update_cookies()
 
     game_data['cookies_nbr'] = app.game_data.cookies  # session['cookies_nbr']
@@ -30,9 +26,13 @@ def accueil():
                            game_data=game_data, version=app.version)
 
 
+@main.route("/refresh")
+def refresh():
+    return app.game_data.get_json()
+
+
 @main.route("/buy/<int:upgrade_index>")
 def buy(upgrade_index):
-    # TODO : redo this function
     if upgrade_index >= len(app.game_data.upgrades) | upgrade_index < 0:
         return
 

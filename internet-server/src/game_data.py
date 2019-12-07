@@ -16,5 +16,8 @@ class GameData:
     def update_cookies(self):
         self.cookies += self.get_cookies_from_click()
 
-    def serialize(self):
-        pass
+    def get_json(self):
+        return {
+            "cookies": self.cookies,
+            "upgrades": self.upgrades
+        }
