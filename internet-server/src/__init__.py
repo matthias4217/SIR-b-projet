@@ -7,9 +7,9 @@ from src.routes import main
 import logging
 
 
-class Jukebox(Flask):
+class Application(Flask):
     """
-    Flask application for the Jukebox
+    Flask application for the Application
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
