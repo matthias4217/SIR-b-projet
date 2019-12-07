@@ -1,5 +1,7 @@
-from flask import Blueprint, redirect, render_template, session
+from flask import Blueprint, redirect, render_template, session, jsonify
 from flask import current_app as app
+
+import json
 
 main = Blueprint('main', __name__)
 
@@ -28,7 +30,7 @@ def accueil():
 
 @main.route("/refresh")
 def refresh():
-    return app.game_data.get_json()
+    return jsonify(app.game_data.get_json())
 
 
 @main.route("/buy/<int:upgrade_index>")
