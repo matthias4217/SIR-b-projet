@@ -1,11 +1,11 @@
 class GameData:
 
-    def __init__(self):
-        self.cookies = 0
-        self.upgrades = [
-            {'name': "🦖 Raptors", 'base_cost': 100, 'number': 0, 'cpc': 1},
+    def __init__(self, _cookies = 0, _upgrades = [
+            {'name': "  Raptors", 'base_cost': 100, 'number': 0, 'cpc': 1},
             {'name': "🚌 Autobus", 'base_cost': 1000, 'number': 0, 'cpc': 10}
-        ]
+        ]):
+        self.cookies = _cookies
+        self.upgrades = _upgrades
 
     def get_cookies_from_click(self):
         new_cookies = 1

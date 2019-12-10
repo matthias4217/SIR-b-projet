@@ -5,7 +5,8 @@ from src.game_data import GameData
 from src.routes import main
 
 import logging
-
+import os
+import json
 
 class Application(Flask):
     """
@@ -18,9 +19,12 @@ class Application(Flask):
         with open("version.txt", 'r') as f:
             self.version = f.read()
         self.game_data = GameData()
-
         self.stylesheet = "default.css"
         self.config.from_pyfile("config.py")
+        if (os.path.exists(self.config["SAVE_DATA_PATH"])):
+            with open(self.config["SAVE_DATA_PATH"], "r") as s:
+                data = json.load(s)
+                self.game_data = GameData(data["cookies"], data["upgrades"])
         self.register_blueprint(main)
         #self.register_blueprint(auth)
         #self.register_blueprint(playlist)

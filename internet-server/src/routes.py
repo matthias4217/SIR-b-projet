@@ -30,7 +30,10 @@ def accueil():
 
 @main.route("/refresh")
 def refresh():
+    with open(app.config["SAVE_DATA_PATH"], "w") as f:
+        json.dump(app.game_data.get_json(), f)
     return jsonify(app.game_data.get_json())
+
 
 
 @main.route("/buy/<int:upgrade_index>")
