@@ -42,7 +42,7 @@ def buy(upgrade_index):
         return
 
     upgrade = app.game_data.upgrades[upgrade_index]
-    if upgrade["base_cost"] < app.game_data.cookies:
+    if upgrade["base_cost"] <= app.game_data.cookies:
         app.game_data.cookies -= upgrade["base_cost"]
         upgrade["number"] += 1
     else:
