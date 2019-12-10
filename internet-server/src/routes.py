@@ -45,6 +45,7 @@ def buy(upgrade_index):
     if upgrade["base_cost"] <= app.game_data.cookies:
         app.game_data.cookies -= upgrade["base_cost"]
         upgrade["number"] += 1
+        upgrade["base_cost"] *= 1.1**upgrade["number"]
     else:
         app.logger.info("Not enough cookies")
     return redirect("/")
