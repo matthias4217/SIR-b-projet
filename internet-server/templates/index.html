@@ -16,7 +16,7 @@
             {% for upgrade in game_data.upgrades %}
                 <li class="upgrade-sold list-group-item">
                     <div class="main-infos">
-                        {{ upgrade["name"] }} : {{ upgrade["base_cost"] }} cookies
+                        {{ upgrade["name"] }} : {{ upgrade["base_cost"] *1.1**upgrade["number"]}} cookies
                     </div>
                     <small class="text-secondary">
                         {{ upgrade["cpc"] }} per click each
