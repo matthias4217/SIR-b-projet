@@ -21,9 +21,9 @@ function update_upgrades(upgrades) {
     // we'll assume no upgrades have been added
     $(".upgrade-sold").each(function( index ) {
         //console.log( index + ": " + $( this ).text() );
-        $(this).text("<div>" + upgrades[index]["name"] + " : " + upgrades[index]["base_cost"]
-            + " cookies\n</div><small class='text-secondary'></small>" + upgrades[index]["cpc"]
-        + " per click each\n</small>");
+        $(this).find("div").text(upgrades[index]["name"] + " : " + upgrades[index]["base_cost"]
+            + " cookies\n");
+        $(this).find("small").text(upgrades[index]["cpc"] + " per click each");
     });
 
     $(".upgrade-bought").each(function( index ) {

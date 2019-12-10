@@ -14,8 +14,8 @@
         <div id="upgrades" class="row border border-secondary p-0">
             <ul class="list-group list-group-horizontal">
             {% for upgrade in game_data.upgrades %}
-                <li class="upgrade list-group-item">
-                    <div>
+                <li class="upgrade-sold list-group-item">
+                    <div class="main-infos">
                         {{ upgrade["name"] }} : {{ upgrade["base_cost"] }} cookies
                     </div>
                     <small class="text-secondary">
