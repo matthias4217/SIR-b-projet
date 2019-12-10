@@ -1,11 +1,18 @@
+import json
+
 class GameData:
 
-    def __init__(self, _cookies = 0, _upgrades = [
-            {'name': "  Raptors", 'base_cost': 100, 'number': 0, 'cpc': 1},
-            {'name': "🚌 Autobus", 'base_cost': 1000, 'number': 0, 'cpc': 10}
-        ]):
+    def __init__(self, _cookies = 0, _upgrades = None, upgrades_path = None):
         self.cookies = _cookies
-        self.upgrades = _upgrades
+        if (_upgrades == None):
+            try:
+                with open(upgrades_path, "r") as f:
+                    self.upgrades = json.load(f)
+            except:
+                print("cannot find upgrades file!")
+                raise
+        else:
+            self.upgrades = _upgrades
 
     def get_cookies_from_click(self):
         new_cookies = 1

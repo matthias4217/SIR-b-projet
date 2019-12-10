@@ -1,0 +1,5 @@
+[
+	{"name": "  Raptors", "base_cost": 100, "number": 0, "cpc": 1},
+	{"name": "🚌 Autobus", "base_cost": 1000, "number": 0, "cpc": 10},
+	{"name": "test_upgd", "base_cost": 1, "number": 0, "cpc": 2}
+]

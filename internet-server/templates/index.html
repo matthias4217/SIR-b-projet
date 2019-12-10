@@ -14,8 +14,13 @@
         <div id="upgrades" class="row border border-secondary p-0">
             <ul class="list-group list-group-horizontal">
             {% for upgrade in game_data.upgrades %}
-                <li class="upgrade-sold list-group-item">
-                    {{ upgrade["name"] }} : {{ upgrade["base_cost"] }} cookies
+                <li class="upgrade list-group-item">
+                    <div>
+                        {{ upgrade["name"] }} : {{ upgrade["base_cost"] }} cookies
+                    </div>
+                    <small>
+                        <font color="grey">{{ upgrade["cpc"] }} per click each</font>
+                    </small>
                 </li>
             {% endfor %}
             </ul>
