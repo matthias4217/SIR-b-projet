@@ -18,9 +18,9 @@ class Application(Flask):
         log.setLevel(logging.WARNING)
         with open("version.txt", 'r') as f:
             self.version = f.read()
-        self.game_data = GameData()
-        self.stylesheet = "default.css"
         self.config.from_pyfile("config.py")
+        self.game_data = GameData(upgrades_path=self.config["UPGRADES_PATH"])
+        self.stylesheet = "default.css"
         if (os.path.exists(self.config["SAVE_DATA_PATH"])):
             with open(self.config["SAVE_DATA_PATH"], "r") as s:
                 data = json.load(s)
