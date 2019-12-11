@@ -16,10 +16,10 @@
             {% for upgrade in game_data.upgrades %}
                 <li class="upgrade-sold list-group-item">
                     <div class="main-infos">
-                        {{ upgrade["name"] }} : {{ upgrade["base_cost"] *1.1**upgrade["number"]}} cookies
+                        {{ upgrade["name"] }} : {{'%0.2f'|format(upgrade["base_cost"] *1.1**upgrade["number"]|float) }} cookies
                     </div>
                     <small class="text-secondary">
-                        {{ upgrade["cpc"] }} per click each
+                        {{ '%0.2f'|format(upgrade["cpc"]|float) }} per click each
                     </small>
                 </li>
             {% endfor %}
@@ -27,7 +27,7 @@
         </div>
     <div class="row">
         <div id="cookie" class="col-8 border border-secondary p-5">
-            Cookies : <span id="cookies_number">{{ game_data.cookies_nbr }}</span>
+            Cookies : <span id="cookies_number">{{ '%0.2f'|format(game_data.cookies_nbr|float) }}</span>
         </div>
         <div id="list" class="col border border-secondary p-0">
             <ul class="list-group">
