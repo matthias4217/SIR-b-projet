@@ -14,21 +14,33 @@
         <div id="upgrades" class="row border border-secondary p-0">
             <ul class="list-group list-group-horizontal">
             {% for upgrade in game_data.upgrades %}
-                <li class="upgrade list-group-item">
-                    {{ game_data.upgrades[upgrade]["name"] }} : {{ game_data.upgrades[upgrade]["cost"] }} cookies
+                <li class="upgrade-sold list-group-item {% if game_data.selection == upgrade["name"] %} active {% else %} inactive {% endif %}">
+                    <div class="main-infos">
+                        {{ upgrade["name"] }} : {{'%0.2f'|format(upgrade["base_cost"] *1.1**upgrade["number"]|float) }} JIN
+                    </div>
+                    <small class="text-secondary">
+                        {{ '%0.2f'|format(upgrade["cpc"]|float) }} JIN per click each
+                    </small>
                 </li>
             {% endfor %}
             </ul>
         </div>
     <div class="row">
         <div id="cookie" class="col-8 border border-secondary p-5">
-            Cookies : {{ game_data.cookies_nbr }}
+            <div class="row">
+                <div class="col-sm-5">
+                    JIN : <span id="cookies_number">{{ '%0.2f'|format(game_data.cookies_nbr|float) }}</span>
+                </div>
+                <div class="col-sm">
+                    <button id="click-button" type="button" class="btn btn-primary">JIN</button>
+                </div>
+            </div>
         </div>
         <div id="list" class="col border border-secondary p-0">
             <ul class="list-group">
             {% for upgrade in game_data.upgrades %}
-                <li class="upgrade list-group-item">
-                    {{ game_data.upgrades[upgrade]["name"] }} : {{ game_data.upgrades[upgrade]["number"] }}
+                <li class="upgrade-bought list-group-item">
+                    {{ upgrade["name"] }} : {{ upgrade["number"] }}
                 </li>
             {% endfor %}
             </ul>
@@ -36,12 +48,14 @@
     </div>
     </div>
     <footer class="container border border-primary">
-        aenyx, rock-kun et ⛧
+        aenyx, rock-kun, ranky, toni et ⛧
         <br />
         Version {{ version }}
     </footer>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ url_for('static',filename='scripts/main.js') }}"></script>
 </body>
 </html>
