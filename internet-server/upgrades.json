@@ -1,5 +1,7 @@
 [
-	{"name": "  Raptors", "base_cost": 100, "number": 0, "cpc": 1},
-	{"name": "🚌 Autobus", "base_cost": 1000, "number": 0, "cpc": 10},
-	{"name": "test_upgd", "base_cost": 1, "number": 0, "cpc": 2}
+	{"name": "🦖 Raptor", "base_cost": 100, "number": 0, "cpc": 1},
+	{"name": "🎨 Mayo Michel-Ange", "base_cost": 1000, "number": 0, "cpc": 10},
+	{"name": "🚌 Autobus", "base_cost": 10000, "number": 0, "cpc": 100},
+	{"name": "🚶 Randonnée", "base_cost": 100000, "number": 0, "cpc": 1000},
+	{"name": "🍽️ Restaurant", "base_cost": 1000000, "number": 0, "cpc": 10000}
 ]
