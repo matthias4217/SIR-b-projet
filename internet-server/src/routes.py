@@ -74,3 +74,12 @@ def change_select(upgrade_index):
     with open(app.config["SAVE_DATA_PATH"], "w") as f:
         json.dump(app.game_data.get_json(), f)
     return jsonify(app.game_data.get_json())
+
+
+
+@main.route("/debug/setcookies/<int:cookies>")
+def debug_setcookies(cookies):
+    app.game_data.cookies = cookies
+    with open(app.config["SAVE_DATA_PATH"], "w") as f:
+        json.dump(app.game_data.get_json(), f)
+    return jsonify(app.game_data.get_json())

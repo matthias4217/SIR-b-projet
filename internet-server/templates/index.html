@@ -16,10 +16,10 @@
             {% for upgrade in game_data.upgrades %}
                 <li class="upgrade-sold list-group-item {% if game_data.selection == upgrade["name"] %} active {% else %} inactive {% endif %}">
                     <div class="main-infos">
-                        {{ upgrade["name"] }} : {{'%0.2f'|format(upgrade["base_cost"] *1.1**upgrade["number"]|float) }} cookies
+                        {{ upgrade["name"] }} : {{'%0.2f'|format(upgrade["base_cost"] *1.1**upgrade["number"]|float) }} JIN
                     </div>
                     <small class="text-secondary">
-                        {{ '%0.2f'|format(upgrade["cpc"]|float) }} cookies per click each
+                        {{ '%0.2f'|format(upgrade["cpc"]|float) }} JIN per click each
                     </small>
                 </li>
             {% endfor %}
@@ -29,7 +29,7 @@
         <div id="cookie" class="col-8 border border-secondary p-5">
             <div class="row">
                 <div class="col-sm-5">
-                    Cookies : <span id="cookies_number">{{ '%0.2f'|format(game_data.cookies_nbr|float) }}</span>
+                    JIN : <span id="cookies_number">{{ '%0.2f'|format(game_data.cookies_nbr|float) }}</span>
                 </div>
                 <div class="col-sm">
                     <button id="click-button" type="button" class="btn btn-primary">JIN</button>
