@@ -23,7 +23,7 @@ function update_upgrades(upgrades) {
         //console.log( index + ": " + $( this ).text() );
         $(this).find("div").text(upgrades[index]["name"] + " : " + (upgrades[index]["base_cost"] *1.1**upgrades[index]["number"]).toFixed(2)
             + " cookies\n");
-        $(this).find("small").text(upgrades[index]["cpc"].toFixed(2) + " per click each");
+        $(this).find("small").text(upgrades[index]["cpc"].toFixed(2) + " cookies per click each");
     });
 
     $(".upgrade-bought").each(function( index ) {
