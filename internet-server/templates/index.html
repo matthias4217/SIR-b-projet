@@ -14,7 +14,7 @@
         <div id="upgrades" class="row border border-secondary p-0">
             <ul class="list-group list-group-horizontal">
             {% for upgrade in game_data.upgrades %}
-                <li class="upgrade-sold list-group-item">
+                <li class="upgrade-sold list-group-item {% if game_data.selection == upgrade["name"] %} active {% else %} inactive {% endif %}">
                     <div class="main-infos">
                         {{ upgrade["name"] }} : {{'%0.2f'|format(upgrade["base_cost"] *1.1**upgrade["number"]|float) }} cookies
                     </div>

@@ -12,6 +12,18 @@ function update_cookies_nbr(cookies) {
 }
 
 
+function update_selection(selection_id) {
+    $(".upgrade-sold").removeClass("active");
+    $(".upgrade-sold").addClass("inactive");
+    $(".upgrade-sold").each(function(index) {
+        console.log("Index : " + index + "; Id : " + selection_id);
+        if (index === selection_id)
+        {
+            $(this).addClass("active");
+        }
+    })
+}
+
 /**
  *
  * @param upgrades
@@ -42,6 +54,7 @@ function refresh_gamedata() {
         let upgrades = data.upgrades;
         update_cookies_nbr(cookies_nbr);
         update_upgrades(upgrades);
+        update_selection(data.selection_id);
     });
 }
 
@@ -51,4 +64,4 @@ function click_cookies() {
 
 $("#click-button").click(click_cookies);
 
-setInterval(refresh_gamedata, 1000);
+setInterval(refresh_gamedata, 100);

@@ -4,7 +4,7 @@ class GameData:
 
     def __init__(self, _cookies = 0, _upgrades = None, upgrades_path = None):
         self.cookies = _cookies
-        if (_upgrades == None):
+        if _upgrades is None:
             try:
                 with open(upgrades_path, "r") as f:
                     self.upgrades = json.load(f)
@@ -13,6 +13,7 @@ class GameData:
                 raise
         else:
             self.upgrades = _upgrades
+        self.selection = 0
 
     def get_cookies_from_click(self):
         new_cookies = 1
@@ -26,5 +27,7 @@ class GameData:
     def get_json(self):
         return {
             "cookies": self.cookies,
-            "upgrades": self.upgrades
+            "upgrades": self.upgrades,
+            "selection": self.upgrades[self.selection]["name"],
+            "selection_id": self.selection
         }
