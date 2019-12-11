@@ -8,7 +8,7 @@
  * @param cookies: int
  */
 function update_cookies_nbr(cookies) {
-    $("#cookies_number").text(cookies);
+    $("#cookies_number").text(cookies.toFixed(2));
 }
 
 
@@ -21,9 +21,9 @@ function update_upgrades(upgrades) {
     // we'll assume no upgrades have been added
     $(".upgrade-sold").each(function( index ) {
         //console.log( index + ": " + $( this ).text() );
-        $(this).find("div").text(upgrades[index]["name"] + " : " + upgrades[index]["base_cost"] *1.1**upgrades[index]["number"]
+        $(this).find("div").text(upgrades[index]["name"] + " : " + (upgrades[index]["base_cost"] *1.1**upgrades[index]["number"]).toFixed(2)
             + " cookies\n");
-        $(this).find("small").text(upgrades[index]["cpc"] + " cookies per click each");
+        $(this).find("small").text(upgrades[index]["cpc"].toFixed(2) + " cookies per click each");
     });
 
     $(".upgrade-bought").each(function( index ) {

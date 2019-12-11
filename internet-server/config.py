@@ -1,7 +1,7 @@
 # config file
 DEBUG = True
 
-APP_NAME="Cookie Clicker"
+APP_NAME="JIN Clicker"
 
 LISTEN_ADDR="0.0.0.0"
 LISTEN_PORT="8082"

@@ -35,7 +35,6 @@ def refresh():
     return jsonify(app.game_data.get_json())
 
 
-
 @main.route("/buy/<int:upgrade_index>")
 def buy(upgrade_index):
     if upgrade_index >= len(app.game_data.upgrades) | upgrade_index < 0:
@@ -45,7 +44,7 @@ def buy(upgrade_index):
     if upgrade["base_cost"]*1.1**upgrade["number"] <= app.game_data.cookies:
         app.game_data.cookies -= upgrade["base_cost"]*1.1**upgrade["number"]
         upgrade["number"] += 1
-        #upgrade["base_cost"] *= 1.1**upgrade["number"]
+        # upgrade["base_cost"] *= 1.1**upgrade["number"]
     else:
         app.logger.info("Not enough cookies")
     return redirect("/")
