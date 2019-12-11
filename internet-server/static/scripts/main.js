@@ -45,4 +45,10 @@ function refresh_gamedata() {
     });
 }
 
+function click_cookies() {
+    $.get("/click");
+}
+
+$("#click-button").click(click_cookies);
+
 setInterval(refresh_gamedata, 1000);

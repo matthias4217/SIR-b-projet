@@ -27,7 +27,14 @@
         </div>
     <div class="row">
         <div id="cookie" class="col-8 border border-secondary p-5">
-            Cookies : <span id="cookies_number">{{ '%0.2f'|format(game_data.cookies_nbr|float) }}</span>
+            <div class="row">
+                <div class="col-sm-5">
+                    Cookies : <span id="cookies_number">{{ '%0.2f'|format(game_data.cookies_nbr|float) }}</span>
+                </div>
+                <div class="col-sm">
+                    <button id="click-button" type="button" class="btn btn-primary">JIN</button>
+                </div>
+            </div>
         </div>
         <div id="list" class="col border border-secondary p-0">
             <ul class="list-group">

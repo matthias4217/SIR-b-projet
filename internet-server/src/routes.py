@@ -20,12 +20,20 @@ def get_style():
 @main.route("/")
 def accueil():
     game_data = dict()
-    app.game_data.update_cookies()
+    # app.game_data.update_cookies()
 
     game_data['cookies_nbr'] = app.game_data.cookies  # session['cookies_nbr']
     game_data['upgrades'] = app.game_data.upgrades
     return render_template("index.html", stylesheet=get_style(), app_name=app.config["APP_NAME"],
                            game_data=game_data, version=app.version)
+
+
+@main.route("/click")
+def click():
+    app.game_data.update_cookies()
+    with open(app.config["SAVE_DATA_PATH"], "w") as f:
+        json.dump(app.game_data.get_json(), f)
+    return jsonify(app.game_data.get_json())
 
 
 @main.route("/refresh")
