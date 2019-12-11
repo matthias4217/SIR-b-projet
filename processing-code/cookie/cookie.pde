@@ -11,7 +11,8 @@ int oldstate;
 int currentstate;
 
 int currentChoice = 1; // entre 1 et numberOfChoice.
-int numberOfChoice = 5;
+int oldChoice = 1;
+int numberOfChoice = 6;
 
 int potentioMax = 1023;
 int potentioMin = 0;
@@ -31,11 +32,18 @@ void draw() {
   float value = map(arduino.analogRead(0),potentioMin,potentioMax,0,1);
   currentChoice = findSelection(value);
   
+  if(currentChoice != oldChoice){
+      println(currentChoice-2);
+      GetRequest req = new GetRequest(server+"/select/"+str(currentChoice-2));
+      req.send();
+  }
+  oldChoice = currentChoice;
+  
   currentstate = arduino.digitalRead(buttonPin);
   if(currentstate == 0 && oldstate == 1)
   {
     click();
-    debugPrint();
+   // debugPrint();
   }
   oldstate = currentstate;
 
@@ -55,7 +63,6 @@ void click() {
       break;
      
   }
-  println(currentChoice);
 }
 
 int findSelection(float value){
